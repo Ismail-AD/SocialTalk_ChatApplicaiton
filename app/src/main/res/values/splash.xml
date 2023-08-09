@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.App.SplashStart" parent="Theme.SplashScreen">
+     <item name="windowSplashScreenBackground">#FFFFFF</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/_4630523_8025524</item>
+        <item name="postSplashScreenTheme">@style/Theme.SocialTalk</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

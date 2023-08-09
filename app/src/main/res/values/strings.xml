@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Social Talk</string>
+    <string name="Fields_Empty_Warning">Fill the empty fields!</string>
+    <string name="SuccessFully_Login">Welcome to Social Talk</string>
+    <string name="title_activity_activtiy_for_code_send">ActivtiyForCodeSend</string>
+
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "642901654865",
+    "firebase_url": "https://social-talk-bf69e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "social-talk-bf69e",
+    "storage_bucket": "social-talk-bf69e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642901654865:android:c301aef12b8bde29b72770",
+        "android_client_info": {
+          "package_name": "com.example.socialtalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642901654865-j1bis7fe5iv96klr6qk8bb0qe6kgplfg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHeH23UTBg7DvPacvmFWqq4zZLpORMMw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642901654865-j1bis7fe5iv96klr6qk8bb0qe6kgplfg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
