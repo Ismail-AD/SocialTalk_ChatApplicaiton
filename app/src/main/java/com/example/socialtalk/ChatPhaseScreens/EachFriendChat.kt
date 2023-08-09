@@ -16,7 +16,6 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -326,12 +325,16 @@ fun EachChat(
                                 }
                                 Button(
                                     onClick = {
-                                        if (userInfoState.username.trim().isNotEmpty())
+                                        if (userInfoState.username.trim().isNotEmpty()) {
                                             dialogEventHandler.invoke(
-                                                EventHandlerForDialogNewContact.ContactChange(Username))
+                                                EventHandlerForDialogNewContact.ContactChange(
+                                                    Username
+                                                )
+                                            )
                                             dialogEventHandler.invoke(
                                                 EventHandlerForDialogNewContact.Submit(receiverId!!)
                                             )
+                                        }
                                     },
                                     colors = ButtonDefaults.buttonColors(
                                         backgroundColor = DarkBlue

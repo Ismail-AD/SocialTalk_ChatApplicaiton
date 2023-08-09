@@ -1,17 +1,17 @@
 package com.example.socialtalk.authscreens
 
+
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedTextField
@@ -39,6 +39,7 @@ import com.example.socialtalk.ui.theme.blusih
 import com.google.firebase.FirebaseException
 
 
+
 @Composable
 fun SignUp(
     numUiState: SignUpViewModel.SignUpUIStateNumber,
@@ -56,149 +57,111 @@ fun SignUp(
 
     val contextObject =
         LocalContext.current  // composition local will provide context object associated with this composable
-
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White), contentAlignment = Alignment.TopCenter
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.signup),
-                contentDescription = "Sign Up Image"
-            )
-        }
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(0.72f)
-                .background(Color.White)
-                .padding(10.dp)
-        ) {
-            Text(
-                text = "Sign Up",
-                style = TextStyle(fontWeight = FontWeight.Bold, fontFamily = Myfont),
-                fontSize = 30.sp
-            )
-            Spacer(modifier = Modifier.padding(20.dp))
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                OutlinedTextField(
-                    value = numUiState.newUsername,
-                    onValueChange = {
-                        eventToBePerformed.invoke(EventHandlerForNumber.UsernameChange(it))
-                    },
-                    singleLine = true,
-                    label = {
-                        Text(text = "Name")
-                    },
-                    placeholder = { Text(text = "Name") },
-                    modifier = Modifier.fillMaxWidth(0.8f)
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.White)
+                    .padding(start = 10.dp, end = 10.dp, bottom = 30.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.otpscreen),
+                    modifier = Modifier.size(100.dp),
+                    contentDescription = "Sign Up Image"
                 )
-                OutlinedTextField(
-                    value = numUiState.newNumber,
-                    onValueChange = {
-                        eventToBePerformed.invoke(EventHandlerForNumber.NumberChange(it))
-                    },
-                    singleLine = true,
-                    label = {
-                        Text(
-                            text = "Number"
-                        )
-                    }, leadingIcon = { Text(text = "+92", color = Color.Black) },
-                    placeholder = { Text(text = "Phone Number") },
-                    modifier = Modifier.fillMaxWidth(0.8f)
+                Spacer(modifier = Modifier.padding(35.dp))
+                Text(
+                    text = "Otp Verification",
+                    style = TextStyle(fontWeight = FontWeight.Bold, fontFamily = Myfont),
+                    fontSize = 30.sp
                 )
-
                 Spacer(modifier = Modifier.padding(20.dp))
-                Button(
-                    onClick = {
-                        focusManager.clearFocus()
-                        if (numUiState.newNumber.isEmpty() || numUiState.newUsername.isEmpty() || numUiState.equals(
-                                "+92"
-                            )
-                        ) {
-                            Toast.makeText(
-                                contextObject,
-                                "Complete Missing Fields !",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            eventToBePerformed.invoke(EventHandlerForNumber.LoadingState(true))
-                            codeToUserPhone.invoke("+92${numUiState.newNumber}", eventToBePerformed,
-                                otpEventForLoading, saveUserData, numUiState.resendOrNot, {
-                                    eventToBePerformed.invoke(
-                                        EventHandlerForNumber.LoadingState(
-                                            false
-                                        )
-                                    )
-                                    Toast.makeText(
-                                        contextObject,
-                                        "You will receive the One-Time Password (OTP) shortly!",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                    rememberController.navigate(ScreenRoutes.codeVerify.route) {
-                                        launchSingleTop = true
-                                        popUpTo(ScreenRoutes.numberInput.route) {
-                                            inclusive = false
-                                        }
-                                    }
-                                }, {
-                                    Toast.makeText(
-                                        contextObject,
-                                        it.localizedMessage,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                })
-//                            codeToUserPhone(
-//                                "+92${numUiState.newNumber}",
-//                                eventToBePerformed,
-//                                otpEventForLoading,
-//                                saveUserData = saveUserData,
-//                                numUiState.resendOrNot,
-//                                onCodeSend = {
-//                                    eventToBePerformed.invoke(
-//                                        EventHandlerForNumber.LoadingState(
-//                                            false
-//                                        )
-//                                    )
-//                                    Toast.makeText(
-//                                        contextObject,
-//                                        "You will receive the One-Time Password (OTP) shortly!",
-//                                        Toast.LENGTH_LONG
-//                                    ).show()
-//                                    rememberController.navigate(ScreenRoutes.codeVerify.route) {
-//                                        launchSingleTop = true
-//                                        popUpTo(ScreenRoutes.numberInput.route) {
-//                                            inclusive = false
-//                                        }
-//                                    }
-//                                }) {
-//                                Toast.makeText(
-//                                    contextObject,
-//                                    it.localizedMessage,
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-                        }
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp),
-                    colors = ButtonDefaults.buttonColors(backgroundColor = blusih)
-                ) {
-                    Text(
-                        text = if (numUiState.resendOrNot) "Resend OTP" else "Send OTP",
-                        fontSize = 18.sp,
-                        fontFamily = Myfont,
-                        letterSpacing = 0.sp,
-                        color = Color.White
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    OutlinedTextField(
+                        value = numUiState.newUsername,
+                        onValueChange = {
+                            eventToBePerformed.invoke(EventHandlerForNumber.UsernameChange(it))
+                        },
+                        singleLine = true,
+                        label = {
+                            Text(text = "Name")
+                        },
+                        placeholder = { Text(text = "Name") },
+                        modifier = Modifier.fillMaxWidth(0.8f)
                     )
-                }
-                Spacer(modifier = Modifier.padding(16.dp))
-            }
+                    OutlinedTextField(
+                        value = numUiState.newNumber,
+                        onValueChange = {
+                            eventToBePerformed.invoke(EventHandlerForNumber.NumberChange(it))
+                        },
+                        singleLine = true,
+                        label = {
+                            Text(
+                                text = "Number"
+                            )
+                        }, leadingIcon = { Text(text = "+92", color = Color.Black) },
+                        placeholder = { Text(text = "Phone Number") },
+                        modifier = Modifier.fillMaxWidth(0.8f)
+                    )
 
+                    Spacer(modifier = Modifier.padding(20.dp))
+                    Button(
+                        onClick = {
+                            focusManager.clearFocus()
+                            if (numUiState.newNumber.isEmpty() || numUiState.newUsername.isEmpty() || numUiState.equals(
+                                    "+92"
+                                )
+                            ) {
+                                Toast.makeText(
+                                    contextObject,
+                                    "Complete Missing Fields !",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                eventToBePerformed.invoke(EventHandlerForNumber.LoadingState(true))
+                                codeToUserPhone.invoke("+92${numUiState.newNumber}", eventToBePerformed,
+                                    otpEventForLoading, saveUserData, numUiState.resendOrNot, {
+                                        eventToBePerformed.invoke(
+                                            EventHandlerForNumber.LoadingState(
+                                                false
+                                            )
+                                        )
+                                        Toast.makeText(
+                                            contextObject,
+                                            "You will receive the One-Time Password (OTP) shortly!",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        rememberController.navigate(ScreenRoutes.codeVerify.route) {
+                                            launchSingleTop = true
+                                            popUpTo(ScreenRoutes.numberInput.route) {
+                                                inclusive = false
+                                            }
+                                        }
+                                    }, {
+                                        Toast.makeText(
+                                            contextObject,
+                                            it.localizedMessage,
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    })
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .height(50.dp),
+                        colors = ButtonDefaults.buttonColors(backgroundColor = blusih)
+                    ) {
+                        Text(
+                            text = if (numUiState.resendOrNot) "Resend OTP" else "Send OTP",
+                            fontSize = 18.sp,
+                            fontFamily = Myfont,
+                            letterSpacing = 0.sp,
+                            color = Color.White
+                        )
+                    }
+                    Spacer(modifier = Modifier.padding(16.dp))
+                }
+
+            }
         }
-    }
-}
