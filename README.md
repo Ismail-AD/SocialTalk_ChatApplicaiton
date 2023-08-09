@@ -3,8 +3,7 @@ Social Talk is a user-friendly chat app that prioritizes seamless communication.
 
 
 # ScreenShots
-
-![Google Pixel 4 XL Screenshot 3](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/6cc761dc-eaa6-4b1d-b450-2e8168b9fc28)
-![Google Pixel 4 XL Screenshot 2](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/4c9b7613-73a6-4bef-9e13-5689912f75a8)
-![Google Pixel 4 XL Screenshot 1](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/5a5ddeef-cbed-41d5-b022-2853b78ce67f)
-![Google Pixel 4 XL Screenshot 0](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/a9feb74e-abd6-4984-ae5d-dee4702debc4)
+![Google Pixel 4 XL Screenshot 0](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/75961946-0f6b-4845-abf3-30c38fd6c497)
+![Google Pixel 4 XL Screenshot 1](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/c034619d-48fc-446d-b6db-e85f35e5eb14)
+![Google Pixel 4 XL Screenshot 2](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/5601c3b8-8883-4978-a95f-93d1b8e0930a)
+![Google Pixel 4 XL Screenshot 3](https://github.com/Ismail-AD/SocialTalk_ChatApplicaiton/assets/99780212/683ece5b-4fea-482f-a473-dcb67a09f7f7)
