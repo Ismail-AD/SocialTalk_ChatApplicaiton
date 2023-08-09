@@ -52,7 +52,7 @@ fun OtpScreen(
                 .background(Color.White), contentAlignment = Alignment.TopCenter
         ) {
             Image(
-                painter = painterResource(id = R.drawable.register_newimage),
+                painter = painterResource(id = R.drawable.otpscreen),
                 contentDescription = "Sign Up Image"
             )
         }

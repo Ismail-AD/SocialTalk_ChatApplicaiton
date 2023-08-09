@@ -64,7 +64,7 @@ fun SignUp(
                 .background(Color.White), contentAlignment = Alignment.TopCenter
         ) {
             Image(
-                painter = painterResource(id = R.drawable.register_newimage),
+                painter = painterResource(id = R.drawable.signup),
                 contentDescription = "Sign Up Image"
             )
         }
